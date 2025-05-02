@@ -3,8 +3,6 @@ import { LuUser } from "react-icons/lu";
 import { LuPhone } from "react-icons/lu";
 
 const Contact = ({ name, number }) => {
-  console.log(name);
-  console.log(number);
   return (
     <div className={styles.contact}>
       <ul className={styles.list}>

@@ -7,19 +7,24 @@ import { useState } from "react";
 
 function App() {
   const [contacts, setContacts] = useState(defaultContacts);
-
   const [search, setSearch] = useState("");
 
-  const searchedContacts = contacts.filter((contact) =>
+  const addContact = (newContact) => {
+    setContacts((contacts) => {
+      return [...contacts, newContact];
+    });
+  };
+
+  const searchContact = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(search.toLowerCase()),
   );
   return (
     <>
       <div className={"container"}>
         <h1>Phonebook</h1>
-        <ContactForm />
-        <SearchBox filter={search} setSearch={setSearch} />
-        <ContactList searchedContacts={searchedContacts} />
+        <ContactForm onAddContact={addContact} />
+        <SearchBox search={search} setSearch={setSearch} />
+        <ContactList onSearchContact={searchContact} />
       </div>
     </>
   );

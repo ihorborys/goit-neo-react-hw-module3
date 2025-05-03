@@ -18,6 +18,7 @@ function App() {
   const searchContact = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(search.toLowerCase()),
   );
+
   return (
     <>
       <div className={"container"}>

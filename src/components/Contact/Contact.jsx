@@ -1,22 +1,23 @@
 import styles from "./Contact.module.css";
 import { LuUser } from "react-icons/lu";
 import { LuPhone } from "react-icons/lu";
+import PropTypes from "prop-types";
 
 const Contact = ({ id, name, number, onDeleteContact }) => {
   return (
     <div className={styles.contact}>
       <ul className={styles.list}>
-        <li className={styles.listItemName}>
+        <li>
           <p className={styles.listItemIconContainer}>
             <LuUser className={styles.listItemIcon} size="16" />
           </p>
-          <p className={styles.listItemText}>{name}</p>
+          <p>{name}</p>
         </li>
-        <li className={styles.listItemNumber}>
+        <li>
           <p className={styles.listItemIconContainer}>
             <LuPhone className={styles.listItemIcon} size="16" />
           </p>
-          <p className={styles.listItemText}>{number}</p>
+          <p>{number}</p>
         </li>
       </ul>
       <button
@@ -30,6 +31,13 @@ const Contact = ({ id, name, number, onDeleteContact }) => {
       </button>
     </div>
   );
+};
+
+Contact.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default Contact;

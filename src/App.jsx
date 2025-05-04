@@ -33,7 +33,6 @@ function App() {
   const searchContact = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(search.toLowerCase()),
   );
-  console.log(contacts);
   return (
     <>
       <div className={"container"}>

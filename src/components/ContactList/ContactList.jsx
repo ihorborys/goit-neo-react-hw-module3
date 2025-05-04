@@ -1,5 +1,6 @@
 import styles from "./ContactList.module.css";
 import Contact from "../Contact/Contact.jsx";
+import PropTypes from "prop-types";
 
 const ContactList = ({ onSearchContact, onDeleteContact }) => {
   return (
@@ -16,6 +17,11 @@ const ContactList = ({ onSearchContact, onDeleteContact }) => {
       ))}
     </ul>
   );
+};
+
+ContactList.propTypes = {
+  onSearchContact: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;

@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "./ContactForm.module.css";
 import { v4 as generatedId } from "uuid";
 import * as Yup from "yup";
+import PropTypes from "prop-types";
 
 const FeedbackSchema = Yup.object().shape({
   id: Yup.string()
@@ -71,6 +72,10 @@ const ContactForm = ({ onAddContact }) => {
       </div>
     </Formik>
   );
+};
+
+ContactForm.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

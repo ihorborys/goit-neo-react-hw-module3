@@ -3,10 +3,19 @@ import defaultContacts from "./components/defaultContacts.json";
 import ContactForm from "./components/ContactForm/ContactForm.jsx";
 import ContactList from "./components/ContactList/ContactList.jsx";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [contacts, setContacts] = useState(defaultContacts);
+  const [contacts, setContacts] = useState(() => {
+    const localContactsData = localStorage.getItem("contactsData");
+    if (localContactsData !== null) return JSON.parse(localContactsData);
+    return defaultContacts;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("contactsData", JSON.stringify(contacts));
+  }, [contacts]);
+
   const [search, setSearch] = useState("");
 
   const addContact = (newContact) => {
@@ -24,7 +33,7 @@ function App() {
   const searchContact = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(search.toLowerCase()),
   );
-
+  console.log(contacts);
   return (
     <>
       <div className={"container"}>

@@ -2,7 +2,7 @@ import styles from "./Contact.module.css";
 import { LuUser } from "react-icons/lu";
 import { LuPhone } from "react-icons/lu";
 
-const Contact = ({ name, number }) => {
+const Contact = ({ id, name, number, onDeleteContact }) => {
   return (
     <div className={styles.contact}>
       <ul className={styles.list}>
@@ -19,7 +19,13 @@ const Contact = ({ name, number }) => {
           <p className={styles.listItemText}>{number}</p>
         </li>
       </ul>
-      <button className={styles.listItemButton} type="submit">
+      <button
+        className={styles.listItemButton}
+        type="submit"
+        onClick={() => {
+          onDeleteContact(id);
+        }}
+      >
         Delete
       </button>
     </div>
